@@ -107,4 +107,16 @@ public interface Mailer {
 	 * @throws Exception
 	 */
 	public void send() throws MessagingException, Exception;
+
+	/**
+	 * <p>Errors-To となるメールアドレスを設定します。</p>
+	 * @param address
+	 */
+	public void setErrorsTo(InternetAddress address);
+
+	/**
+	 * <p>Return-Path となるメールアドレスを設定します。</p>
+	 * @param address
+	 */
+	public void setReturnPath(InternetAddress address);
 }

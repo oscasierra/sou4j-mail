@@ -16,6 +16,8 @@ public abstract class AbstractTextMailer implements Mailer {
 	private InternetAddress[] toAddresses;
 	private InternetAddress[] ccAddresses;
 	private InternetAddress[] bccAddresses;
+	private InternetAddress errorsTo;
+	private InternetAddress returnPath;
 	private String subject;
 	private String body;
 	private DataSource[] files;
@@ -168,6 +170,38 @@ public abstract class AbstractTextMailer implements Mailer {
 	 */
 	protected InternetAddress[] getBcc() {
 		return this.bccAddresses;
+	}
+
+	/**
+	 * <p>Errors-To となるメールアドレスを追加します。</p>
+	 */
+	public void setErrorsTo(InternetAddress address) {
+		if( address == null ) throw new IllegalArgumentException("Method argument 'address' is null.");
+		this.errorsTo = address;
+	}
+
+	/**
+	 * <p>Errors-To となるメールアドレスを返却します。</p>
+	 * @return Errors-To となるメールアドレス
+	 */
+	protected InternetAddress getErrorsTo() {
+		return this.errorsTo;
+	}
+
+	/**
+	 * <p>Return-Path となるメールアドレスを追加します。</p>
+	 */
+	public void setReturnPath(InternetAddress address) {
+		if( address == null ) throw new IllegalArgumentException("Method argument 'address' is null.");
+		this.returnPath = address;
+	}
+
+	/**
+	 * <p>Return-Path となるメールアドレスを返却します。</p>
+	 * @return Return-Path となるメールアドレス
+	 */
+	protected InternetAddress getReturnPath() {
+		return this.returnPath;
 	}
 
 	/**

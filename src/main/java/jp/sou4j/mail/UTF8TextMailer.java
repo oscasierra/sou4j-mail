@@ -29,12 +29,18 @@ public class UTF8TextMailer extends AbstractTextMailer {
 	public void send() throws MessagingException {
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", super.getSmtpHost());
+		if( super.getReturnPath() != null ) {
+			properties.put("mail.smtp.from", super.getReturnPath().getAddress());
+		}
 		Session session = Session.getInstance(properties, null);
 
 		try {
 			MimeMessage mimeMessage = new MimeMessage(session);
 			mimeMessage.setHeader("Content-Type", "text/plain; charset=UTF-8");
 			mimeMessage.setHeader("Content-Transfer-Encoding", "8bit");
+			if( super.getErrorsTo() != null ) {
+				mimeMessage.setHeader("Errors-To", super.getErrorsTo().getAddress());
+			}
 			mimeMessage.setFrom(super.getFrom());
 			mimeMessage.setSentDate(new Date());
 			mimeMessage.setRecipients(Message.RecipientType.TO, super.getTo());
