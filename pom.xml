@@ -14,6 +14,13 @@
       <url>file://${project.build.directory}/mvn-repo</url>
     </repository>
   </distributionManagement>
+  <repositories>
+    <repository>
+      <id>sou4j</id>
+      <name>sou4j</name>
+      <url>https://raw.githubusercontent.com/oscasierra/sou4j-mvn-repo/master/</url>
+    </repository>
+  </repositories>
   <build>
     <plugins>
       <plugin>
@@ -64,6 +71,7 @@
   </build>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <github.global.server>github</github.global.server>
   </properties>
   <dependencies>
     <dependency>
